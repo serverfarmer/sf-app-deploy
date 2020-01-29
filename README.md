@@ -5,7 +5,7 @@ application itself, moderate web traffic, no strict security requirements).
 
 ## Overview
 
-`app-install` script installs the application - you just need to supply:
+`sf-app-install` script installs the application - you just need to supply:
 
 - application name (eg. myapp)
 - target directory (eg. /var/www/myapp)
@@ -14,7 +14,7 @@ application itself, moderate web traffic, no strict security requirements).
 - deployment key (eg. id_myapp, it should be located in `/etc/local/.ssh` directory)
 - list of email addresses to notify after each deployment (optional)
 
-`app-install myapp /var/www/myapp www-data ssh://git@github.com/mycompany/myapp id_myapp john.doe@company.com`
+`sf-app-install myapp /var/www/myapp www-data ssh://git@github.com/mycompany/myapp id_myapp john.doe@company.com`
 
 This will clone the repository to chosen target directory, set proper
 permissions for everything, and add entry to `/etc/crontab` file (which
@@ -27,7 +27,7 @@ build hook scripts.
 When no changes are detected, and none of hook scripts will report an
 error, no report is stored, and the application is considered unchanged.
 Otherwise, report file is stored in `/var/log/deploy-myapp` directory and
-sent to all email addresses passed previously to `app-install`.
+sent to all email addresses passed previously to `sf-app-install`.
 
 ## Hook scripts
 
