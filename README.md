@@ -11,7 +11,7 @@ application itself, moderate web traffic, no strict security requirements).
 - target directory (eg. /var/www/myapp)
 - system user with write permissions (eg. www-data)
 - repository url (eg. `ssh://git@github.com/mycompany/myapp`)
-- deployment key (eg. id_myapp, it should be located in `/etc/local/.ssh` directory)
+- deployment key (eg. id_myapp, it should be located in `~/.ssh` directory)
 - list of email addresses to notify after each deployment (optional)
 
 `sf-app-install myapp /var/www/myapp www-data ssh://git@github.com/mycompany/myapp id_myapp john.doe@company.com`

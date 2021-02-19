@@ -9,7 +9,7 @@ elif ! [[ $1 =~ ^[a-z0-9-]+$ ]]; then
 elif [ ! -d $2 ]; then
 	echo "invalid application directory $2"
 	exit 1
-elif [ ! -f /etc/local/.ssh/$3 ]; then
+elif [ ! -f ~/.ssh/$3 ]; then
 	echo "git key $3 not found"
 	exit 1
 fi
@@ -39,7 +39,7 @@ if [ "`whoami`" != "root" ] && [ -x $target/build-prepare.sh ]; then
 	$target/build-prepare.sh >>$tmp
 fi
 
-GIT_SSH=/opt/farm/scripts/git/helper.sh GIT_KEY=/etc/local/.ssh/$key git pull 2>&1 |grep -v "Already up-to-date" >>$tmp
+GIT_SSH=/opt/farm/scripts/git/helper.sh GIT_KEY=~/.ssh/$key git pull 2>&1 |grep -v "Already up-to-date" >>$tmp
 
 if [ "`whoami`" != "root" ] && [ -x $target/build.sh ]; then
 	$target/build.sh >>$tmp

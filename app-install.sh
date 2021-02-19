@@ -15,7 +15,7 @@ elif [ -d $2 ]; then
 elif [ "`getent passwd $3`" = "" ]; then
 	echo "user $3 not found"
 	exit 1
-elif [ ! -f /etc/local/.ssh/$5 ]; then
+elif [ ! -f ~/.ssh/$5 ]; then
 	echo "git key $5 not found"
 	exit 1
 fi
@@ -31,7 +31,7 @@ shift
 shift
 shift
 
-GIT_SSH=/opt/farm/scripts/git/helper.sh GIT_KEY=/etc/local/.ssh/$key git clone $giturl $target
+GIT_SSH=/opt/farm/scripts/git/helper.sh GIT_KEY=~/.ssh/$key git clone $giturl $target
 
 if [ ! -d $target ]; then
 	echo "aborting application setup due to above git problem"
