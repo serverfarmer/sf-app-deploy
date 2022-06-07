@@ -44,17 +44,17 @@ logpath="/var/log/deploy-$app/"
 mkdir -m 0710 -p $logpath
 chown $user:$group $logpath
 chown -R $user:$group $target
-mkdir -p /etc/local/hooks
+mkdir -p ~/.serverfarmer/hooks
 
-if [ ! -f /etc/local/hooks/pre-deploy-$app.sh ]; then
-	echo '#!/bin/sh' >/etc/local/hooks/pre-deploy-$app.sh
+if [ ! -f ~/.serverfarmer/hooks/pre-deploy-$app.sh ]; then
+	echo '#!/bin/sh' >~/.serverfarmer/hooks/pre-deploy-$app.sh
 fi
 
-if [ ! -f /etc/local/hooks/post-deploy-$app.sh ]; then
-	echo '#!/bin/sh' >/etc/local/hooks/post-deploy-$app.sh
+if [ ! -f ~/.serverfarmer/hooks/post-deploy-$app.sh ]; then
+	echo '#!/bin/sh' >~/.serverfarmer/hooks/post-deploy-$app.sh
 fi
 
-chmod +x /etc/local/hooks/pre-deploy-$app.sh /etc/local/hooks/post-deploy-$app.sh
+chmod +x ~/.serverfarmer/hooks/pre-deploy-$app.sh ~/.serverfarmer/hooks/post-deploy-$app.sh
 
 echo "
 */15 * * * * $user /opt/farm/ext/app-deploy/cron/deploy.sh  $app $target $key  $@

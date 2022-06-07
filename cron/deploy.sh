@@ -31,8 +31,8 @@ log="$logpath/$module-`date +%Y%m%d-%H%M`.$$.log"
 touch $tmp
 cd $target
 
-if [ -x /etc/local/hooks/pre-deploy-$app.sh ]; then
-	/etc/local/hooks/pre-deploy-$app.sh $target >>$tmp
+if [ -x ~/.serverfarmer/hooks/pre-deploy-$app.sh ]; then
+	~/.serverfarmer/hooks/pre-deploy-$app.sh $target >>$tmp
 fi
 
 if [ "`whoami`" != "root" ] && [ -x $target/build-prepare.sh ]; then
@@ -45,8 +45,8 @@ if [ "`whoami`" != "root" ] && [ -x $target/build.sh ]; then
 	$target/build.sh >>$tmp
 fi
 
-if [ -x /etc/local/hooks/post-deploy-$app.sh ]; then
-	/etc/local/hooks/post-deploy-$app.sh $target >>$tmp
+if [ -x ~/.serverfarmer/hooks/post-deploy-$app.sh ]; then
+	~/.serverfarmer/hooks/post-deploy-$app.sh $target >>$tmp
 fi
 
 if [ ! -s $tmp ]; then
